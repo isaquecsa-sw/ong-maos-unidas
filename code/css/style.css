@@ -1,0 +1,331 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS DE CORES
+   ========================================================================== */
+:root {
+    --primary-color: #1d3557;     /* Azul escuro institucional */
+    --secondary-color: #457b9d;   /* Azul intermediário */
+    --accent-color: #e63946;      /* Vermelho destaque/alerta */
+    --light-bg: #f8f9fa;          /* Fundo suave da página */
+    --card-bg: #ffffff;           /* Fundo dos cartões */
+    --text-color: #2b2d42;        /* Cor principal dos textos */
+    --text-muted: #6c757d;       /* Texto secundário */
+    --border-color: #e9ecef;      /* Bordas suaves */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E NAVEGAÇÃO (HEADER & NAV)
+   ========================================================================== */
+.main-header {
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Submenu Dropdown Corrigido */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: var(--shadow-light);
+    border-radius: 6px;
+    display: none; /* Mantém escondido por padrão */
+    flex-direction: column;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    z-index: 1000;
+}
+
+/* Abre APENAS quando o mouse passa por cima do item do menu */
+.dropdown:hover > .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    color: var(--text-color) !important;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    background-color: transparent !important;
+    display: block;
+    width: 100%;
+    border-radius: 0;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1faee !important;
+    color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   3. LAYOUT PRINCIPAL (GRID CONTAINER)
+   ========================================================================== */
+.grid-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    flex: 1;
+}
+
+.content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Layout do Formulário */
+.form-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    width: 90%;
+}
+
+/* ==========================================================================
+   4. COMPONENTES VISUAIS (CARDS, BADGES, ALERTAS)
+   ========================================================================== */
+/* Cartões e Artigos */
+.card, .project-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    border-left: 4px solid var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.project-card h3 {
+    margin-top: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Imagens dos Projetos e Institucionais */
+.hero-image, .project-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* Badges (Selos) */
+.badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.badge-info { background-color: var(--secondary-color); }
+.badge-warning { background-color: #e9c46a; color: #2b2d42; }
+.badge-success { background-color: #2a9d8f; }
+
+/* Alertas Visuais */
+.alert {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem auto 0;
+    max-width: 1200px;
+    width: calc(100% - 3rem);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+}
+
+.alert-info {
+    background-color: #e8f4f8;
+    color: #1d3557;
+    border: 1px solid #b8e2f2;
+}
+
+/* ==========================================================================
+   5. BOTÕES E FORMULÁRIOS
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #112233;
+}
+
+.btn-secondary {
+    background-color: var(--text-muted);
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: #495057;
+}
+
+/* Estilização de Formulários */
+.custom-form fieldset {
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.custom-form legend {
+    font-weight: 700;
+    color: var(--primary-color);
+    padding: 0 0.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FOOTER)
+   ========================================================================== */
+.main-footer {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   7. RESPONSIVIDADE (DISPOSITIVOS MÓVEIS)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .main-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+}
